@@ -4,6 +4,13 @@ import sqlite3
 
 
 DB_FILE = "./data.db"
+HOSTNAME_MAP = {
+    'ip-10-0-5-216'  : "graviton3",
+    'ip-10-0-128-152': "icelake",
+    'ip-10-0-129-120': "graviton2",
+    'ip-10-0-5-250'  : "zen3",
+    'ip-10-0-7-30'   : "skylake",
+}
 
 
 def init():
@@ -30,9 +37,10 @@ def import_data(file):
     with open(file, newline='') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=',', skipinitialspace=True)
         for row in reader:
+            mapped_hostname = HOSTNAME_MAP.get(row["Hostname"], row["Hostname"])
             cur.execute(
                 "INSERT INTO benchmarks VALUES (?, ?, ?, ?, ?, ?)", (
-                row["Hostname"], row["User"], row["Script"],
+                mapped_hostname, row["User"], row["Script"],
                 row["Trial"], row["Threads"], row["Speed"])
             )
 
