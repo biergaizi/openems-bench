@@ -13,3 +13,7 @@ cd -
 cd openems-octave
 ./benchmark.sh
 cd -
+
+rm -rf /tmp/$(whoami)
+
+python3 report.py > result.csv
