@@ -10,6 +10,13 @@ HOSTNAME_MAP = {
     'ip-10-0-129-120': "graviton2",
     'ip-10-0-5-250'  : "zen3",
     'ip-10-0-7-30'   : "skylake",
+    'ip-10-0-6-160'  : "haswell",
+    'archlinux'      : "zen2",
+}
+USER_MAP = {
+    'upstream': 'upstream',
+    'hack'    : 'hack',
+    'ubuntu'  : 'hack',
 }
 
 
@@ -38,9 +45,10 @@ def import_data(file):
         reader = csv.DictReader(csvfile, delimiter=',', skipinitialspace=True)
         for row in reader:
             mapped_hostname = HOSTNAME_MAP.get(row["Hostname"], row["Hostname"])
+            mapped_user = USER_MAP.get(row["User"])
             cur.execute(
                 "INSERT INTO benchmarks VALUES (?, ?, ?, ?, ?, ?)", (
-                mapped_hostname, row["User"], row["Script"],
+                mapped_hostname, mapped_user, row["Script"],
                 row["Trial"], row["Threads"], row["Speed"])
             )
 
