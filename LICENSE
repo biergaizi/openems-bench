@@ -1,3 +1,16 @@
+All the benchmark scripts are copied and modified from
+openEMS, copyrighted under GPLv3 (and later) by Thorsten
+Liebig <thorsten.liebig@gmx.de>, see COPYING.gplv3 for
+more information.
+
+Other original scripts, such as the shell scripts for
+executing the benchmarks, database management, and plotting,
+are copyrighted and licensed simultaneously under GPLv3 (and
+later), and also under CC0 1.0 Universal by Yifeng li
+<tomli@tomli.me>.
+
+--------------------------------------------------------------------------
+
 Creative Commons Legal Code
 
 CC0 1.0 Universal
