@@ -7,6 +7,9 @@ uname -a > uname
 
 mkdir /tmp/$(whoami)
 
+cd pyems
+./benchmark.sh
+cd -
 cd openems-python
 ./benchmark.sh
 cd -
