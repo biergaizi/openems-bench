@@ -10,3 +10,5 @@ do
 		python3 $i > $i.result.$count 2>&1
 	done
 done
+
+rm -rf sim
