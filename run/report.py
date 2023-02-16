@@ -25,7 +25,7 @@ hostname = socket.gethostname()
 user = getpass.getuser()
 
 print("Hostname, User, Script, Trial, Threads, Speed")
-for file in chain(os.scandir("openems-python"), os.scandir("openems-octave")):
+for file in chain(os.scandir("openems-python"), os.scandir("openems-octave"), os.scandir("pyems")):
     for i in range(0, 4):
         if file.name.endswith(".result.%d" % i):
             script_name = ".".join([file.name.split(".")[0], file.name.split(".")[1]])
