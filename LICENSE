@@ -1,7 +1,11 @@
-All the benchmark scripts are copied and modified from
+openEMS benchmark scripts are copied and modified from
 openEMS, copyrighted under GPLv3 (and later) by Thorsten
 Liebig <thorsten.liebig@gmx.de>, see COPYING.gplv3 for
 more information.
+
+pyEMS benchmark scripts are copied and modified from pyEMS,
+copyrighted under GPLv3 only by Matt Huszagh, see COPYING.gplv3
+for more information.
 
 Other original scripts, such as the shell scripts for
 executing the benchmarks, database management, and plotting,
