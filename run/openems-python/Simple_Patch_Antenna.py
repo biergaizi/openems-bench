@@ -17,6 +17,7 @@ from pylab import *
 from CSXCAD  import ContinuousStructure
 from openEMS import openEMS
 from openEMS.physical_constants import *
+from utils import abort_after, abort_cleanup
 
 ### General parameter setup
 Sim_Path = os.path.join(tempfile.gettempdir(), getpass.getuser(), 'Simp_Patch')
@@ -113,5 +114,7 @@ if 0:  # debugging only
 if not post_proc_only:
     for i in range(1, 5):
         print("Benchmark: running with %d threads" % i, flush=True)
+        abort_after(Sim_Path, 30)
         FDTD.Run(Sim_Path, cleanup=True, numThreads=i)
+        abort_cleanup(Sim_Path)
     os._exit(0)

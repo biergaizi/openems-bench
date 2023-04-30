@@ -19,6 +19,7 @@ from CSXCAD  import ContinuousStructure
 from openEMS import openEMS
 from openEMS.physical_constants import *
 from openEMS.automesh import mesh_hint_from_box
+from utils import abort_after, abort_cleanup
 
 ### Class to represent single CRLH unit cells
 class CRLH_Cells:
@@ -168,5 +169,7 @@ if __name__ == '__main__':
     if not post_proc_only:
         for i in range(1, 5):
             print("Benchmark: running with %d threads" % i, flush=True)
+            abort_after(Sim_Path, 30)
             FDTD.Run(Sim_Path, cleanup=True, numThreads=i)
+            abort_cleanup(Sim_Path)
         os._exit(0)
