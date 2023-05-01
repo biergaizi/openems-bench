@@ -59,3 +59,6 @@ def abort_cleanup(sim):
             break
         except FileNotFoundError:
             pass
+
+    sys.stdout.flush()
+    sys.stderr.flush()
