@@ -86,7 +86,7 @@ if 0:  # debugging only
 
 
 if not post_proc_only:
-    for i in range(1, 5):
+    for i in range(1, 11):
         print("Benchmark: running with %d threads" % i, flush=True)
         abort_after(Sim_Path, 30)
         FDTD.Run(Sim_Path, cleanup=True, numThreads=i)

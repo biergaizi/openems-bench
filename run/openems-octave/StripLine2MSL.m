@@ -110,7 +110,7 @@ Sim_CSX = 'strip2msl.xml';
 [status, message, messageid] = mkdir( Sim_Path ); % create empty simulation folder
 
 WriteOpenEMS( [Sim_Path '/' Sim_CSX], FDTD, CSX );
-for i = 1:4
+for i = 1:10
 	printf("Benchmark: running with %d threads\n", i);
 	RunOpenEMS(Sim_Path, Sim_CSX, sprintf("--numThreads=%d", i));
 endfor

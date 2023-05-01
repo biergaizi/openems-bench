@@ -101,7 +101,7 @@ dump = FieldDump(sim=sim, box=mesh.sim_box(include_pml=False))
 if os.getenv("_PYEMS_PYTEST"):
     sys.exit(0)
 
-for i in range(1, 5):
+for i in range(1, 11):
     print("Benchmark: running with %d threads" % i, flush=True)
     abort_after(sim, 30)
     sim.run(csx=False, threads=i)
