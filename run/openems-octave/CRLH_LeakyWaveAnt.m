@@ -112,7 +112,11 @@ Sim_CSX = 'CRLH.xml';
 [status, message, messageid] = mkdir( Sim_Path ); % create empty simulation folder
 
 WriteOpenEMS( [Sim_Path '/' Sim_CSX], FDTD, CSX );
-for i = 1:10
+
+min_thread = str2num(getenv("BENCH_MIN_THREAD"));
+max_thread = str2num(getenv("BENCH_MAX_THREAD"));
+
+for i = min_thread:max_thread
 	printf("Benchmark: running with %d threads\n", i);
 	RunOpenEMS(Sim_Path, Sim_CSX, sprintf("--numThreads=%d", i));
 endfor
