@@ -3,6 +3,9 @@ import os
 import threading
 from time import sleep
 
+min_thread = int(os.environ["BENCH_MIN_THREAD"])
+max_thread = int(os.environ["BENCH_MAX_THREAD"])
+
 lock = threading.Lock()
 
 def _abort(sim_dir, seconds):

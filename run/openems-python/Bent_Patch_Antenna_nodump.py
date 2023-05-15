@@ -19,8 +19,10 @@ from CSXCAD import CSXCAD
 
 from openEMS.openEMS import openEMS
 from openEMS.physical_constants import *
-from utils import abort_after, abort_cleanup
+from utils import abort_after, abort_cleanup, min_thread, max_thread
 
+min_thread = int(os.environ["BENCH_MIN_THREAD"])
+max_thread = int(os.environ["BENCH_MAX_THREAD"])
 
 ### Setup the simulation
 Sim_Path = os.path.join(tempfile.gettempdir(), getpass.getuser(), 'Bent_Patch')
@@ -127,7 +129,7 @@ if 0:  # debugging only
     os.system(AppCSXCAD_BIN + ' "{}"'.format(CSX_file))
 
 if not post_proc_only:
-    for i in range(1, 11):
+    for i in range(min_thread, max_thread + 1):
         print("Benchmark: running with %d threads" % i, flush=True)
         abort_after(Sim_Path, 30)
         FDTD.Run(Sim_Path, cleanup=True, numThreads=i)
