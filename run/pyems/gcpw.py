@@ -10,7 +10,7 @@ from pyems.pcb import common_pcbs
 from pyems.mesh import Mesh
 from pyems.utilities import print_table, mil_to_mm
 from pyems.field_dump import FieldDump
-from utils import abort_after, abort_cleanup
+from utils import abort_after, abort_cleanup, min_thread, max_thread
 
 freq = np.arange(0, 18e9, 1e7)
 sim = Simulation(freq=freq, unit=1e-3)
@@ -81,7 +81,7 @@ if os.getenv("_PYEMS_PYTEST"):
     sys.exit(0)
 
 
-for i in range(1, 11):
+for i in range(min_thread, max_thread + 1):
     print("Benchmark: running with %d threads" % i, flush=True)
     abort_after(sim, 30)
     sim.run(csx=False, threads=i)

@@ -24,7 +24,7 @@ from pyems.csxcad import (
     construct_box,
     construct_cylinder,
 )
-from utils import abort_after, abort_cleanup
+from utils import abort_after, abort_cleanup, min_thread, max_thread
 
 freq = np.arange(0, 18e9, 1e7)
 ref_freq = 5.6e9
@@ -234,7 +234,7 @@ field = FieldDump(sim=sim, box=box, dump_type=DumpType.efield_time)
 if os.getenv("_PYEMS_PYTEST"):
     sys.exit(0)
 
-for i in range(1, 11):
+for i in range(min_thread, max_thread + 1):
     print("Benchmark: running with %d threads" % i, flush=True)
     abort_after(sim, 30)
     sim.run(csx=False, threads=i)

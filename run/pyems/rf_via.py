@@ -10,7 +10,7 @@ from pyems.utilities import print_table, mil_to_mm
 from pyems.structure import PCB, Microstrip, Via
 from pyems.coordinate import Box2, Axis
 from pyems.mesh import Mesh
-from utils import abort_after, abort_cleanup
+from utils import abort_after, abort_cleanup, min_thread, max_thread
 
 
 unit = 1e-3
@@ -101,7 +101,7 @@ dump = FieldDump(sim=sim, box=mesh.sim_box(include_pml=False))
 if os.getenv("_PYEMS_PYTEST"):
     sys.exit(0)
 
-for i in range(1, 11):
+for i in range(min_thread, max_thread + 1):
     print("Benchmark: running with %d threads" % i, flush=True)
     abort_after(sim, 30)
     sim.run(csx=False, threads=i)

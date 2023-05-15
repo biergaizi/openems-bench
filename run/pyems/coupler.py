@@ -12,7 +12,7 @@ from pyems.coordinate import Coordinate2, Axis, Box3, Coordinate3
 from pyems.mesh import Mesh
 from pyems.field_dump import FieldDump, DumpType
 from pyems.kicad import write_footprint
-from utils import abort_after, abort_cleanup
+from utils import abort_after, abort_cleanup, min_thread, max_thread
 
 freq = np.linspace(0e9, 18e9, 501)
 ref_freq = 5.6e9
@@ -126,7 +126,7 @@ write_footprint(coupler, "coupler_20db", "coupler_20db.kicad_mod")
 if os.getenv("_PYEMS_PYTEST"):
     sys.exit(0)
 
-for i in range(1, 11):
+for i in range(min_thread, max_thread + 1):
     print("Benchmark: running with %d threads" % i, flush=True)
     abort_after(sim, 30)
     sim.run(csx=False, threads=i)
