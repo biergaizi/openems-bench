@@ -2,4 +2,4 @@ all:
 	./benchmark.sh
 
 clean:
-	rm -rf result tmp lscpu lstopo uname /tmp/user/tmp
+	rm -rf result result.tar tmp lscpu lstopo uname /tmp/user/tmp
