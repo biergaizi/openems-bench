@@ -25,6 +25,9 @@ hostname = socket.gethostname()
 
 print("Hostname, Target, Script, Trial, Threads, Speed")
 for target in os.scandir("./result"):
+    if not target.is_dir():
+        continue
+
     for file in chain(
             os.scandir(target.path + "/openems-python"),
             os.scandir(target.path + "/openems-octave"),
