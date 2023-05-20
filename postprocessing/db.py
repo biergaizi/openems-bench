@@ -12,11 +12,9 @@ HOSTNAME_MAP = {
     'ip-10-0-7-30'   : "skylake",
     'ip-10-0-6-160'  : "haswell",
     'archlinux'      : "zen2",
+    'users-iMac-Pro.lan': 'macos-dev'
 }
-USER_MAP = {
-    'upstream': 'upstream',
-    'hack'    : 'hack',
-    'ubuntu'  : 'hack',
+BUILD_MAP = {
 }
 
 
@@ -27,7 +25,7 @@ def init():
                    CREATE TABLE benchmarks
                    (
                        hostname TEXT,
-                       user TEXT,
+                       build TEXT,
                        script TEXT,
                        trial INTEGER,
                        threads INTEGER,
@@ -45,10 +43,10 @@ def import_data(file):
         reader = csv.DictReader(csvfile, delimiter=',', skipinitialspace=True)
         for row in reader:
             mapped_hostname = HOSTNAME_MAP.get(row["Hostname"], row["Hostname"])
-            mapped_user = USER_MAP.get(row["User"])
+            mapped_build = BUILD_MAP.get(row["Build"], row["Build"])
             cur.execute(
                 "INSERT INTO benchmarks VALUES (?, ?, ?, ?, ?, ?)", (
-                mapped_hostname, mapped_user, row["Script"],
+                mapped_hostname, mapped_build, row["Script"],
                 row["Trial"], row["Threads"], row["Speed"])
             )
 
@@ -63,12 +61,12 @@ def delete_data(file):
         reader = csv.DictReader(csvfile, delimiter=',', skipinitialspace=True)
         for row in reader:
             mapped_hostname = HOSTNAME_MAP.get(row["Hostname"], row["Hostname"])
-            mapped_user = USER_MAP.get(row["User"])
+            mapped_build = BUILD_MAP.get(row["Build"], row["Build"])
             cur.execute(
                 "DELETE FROM benchmarks "
-                "WHERE hostname=? AND user=? AND script=? AND trial=? AND threads=? AND speed=?",
+                "WHERE hostname=? AND build=? AND script=? AND trial=? AND threads=? AND speed=?",
                 (
-                    mapped_hostname, mapped_user, row["Script"],
+                    mapped_hostname, mapped_build, row["Script"],
                     row["Trial"], row["Threads"], row["Speed"]
                 )
             )
