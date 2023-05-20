@@ -23,7 +23,7 @@ def parse_result(file):
 
 hostname = socket.gethostname()
 
-print("Hostname, Target, Script, Trial, Threads, Speed")
+print("Hostname, Build, Script, Trial, Threads, Speed")
 for target in os.scandir("./result"):
     if not target.is_dir():
         continue
