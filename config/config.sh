@@ -9,8 +9,8 @@ export BENCH_MAX_THREAD=4
 # Edit this list to change benchmarked targets
 ENABLED_LIST=(
     "upstream"
-    "nxyz"
     "xyzn"
+    "nxyz"
 )
 
 CFLAGS_LIST=(
@@ -30,16 +30,16 @@ REPO_LIST=(
     "https://github.com/biergaizi/openEMS.git"           # openEMS individual repo
     "preserve-cflags"                                    # openEMS individual branch
     EOF
+
+    "xyzn"                                               # alias
+    "https://github.com/thliebig/openEMS-Project.git"    # bundle repo
+    "https://github.com/biergaizi/openEMS.git"           # openEMS individual repo
+    "rework-stage3-corrected-xyzn"                       # openEMS individual branch
+    EOF
     
     "nxyz"                                               # alias
     "https://github.com/thliebig/openEMS-Project.git"    # bundle repo
     "https://github.com/biergaizi/openEMS.git"           # openEMS individual repo
     "rework-stage3-corrected-nxyz-pad"                   # openEMS individual branch
-    EOF
-    
-    "xyzn"                                               # alias
-    "https://github.com/thliebig/openEMS-Project.git"    # bundle repo
-    "https://github.com/biergaizi/openEMS.git"           # openEMS individual repo
-    "rework-stage3-corrected-xyzn"                       # openEMS individual branch
     EOF
 )
