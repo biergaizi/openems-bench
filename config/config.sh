@@ -34,12 +34,12 @@ REPO_LIST=(
     "nxyz"                                               # alias
     "https://github.com/thliebig/openEMS-Project.git"    # bundle repo
     "https://github.com/biergaizi/openEMS.git"           # openEMS individual repo
-    "rework-stage3-nxyz-cflags"                          # openEMS individual branch
+    "rework-stage3-corrected-nxyz-pad"                   # openEMS individual branch
     EOF
     
     "xyzn"                                               # alias
     "https://github.com/thliebig/openEMS-Project.git"    # bundle repo
     "https://github.com/biergaizi/openEMS.git"           # openEMS individual repo
-    "rework-stage3-xyzn-pad-cflags"                      # openEMS individual branch
+    "rework-stage3-corrected-xyzn"                       # openEMS individual branch
     EOF
 )
