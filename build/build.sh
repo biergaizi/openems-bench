@@ -81,7 +81,7 @@ function build
 
     cd openEMS
     git checkout master
-    git pull
+    git pull --rebase
     git checkout "$git_openems_branch"
     cd ..
 
@@ -89,7 +89,7 @@ function build
     # https://github.com/thliebig/fparser/issues/4
     cd fparser
     git checkout master
-    git pull
+    git pull --rebase
     cd ..
 
     git clone https://github.com/matthuszagh/pyems.git
