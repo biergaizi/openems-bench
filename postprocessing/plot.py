@@ -24,6 +24,8 @@ SIMULATION_ANNOT = {
     'StripLine2MSL.m': "147x103x35",
     'coupler.py': "227x86x37",
     'gcpw.py': "147x335x77",
+    'gcpw_nopml.py': "147x335x77",
+    'gcpw_nopml_nocondsheet.py': "147x335x77",
     'microstrip_sma_transition.py': "162x215x165",
     'rf_via.py': "178x189x61",
 }
