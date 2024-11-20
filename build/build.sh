@@ -83,6 +83,7 @@ function build
     git checkout master
     git pull --rebase
     git checkout "$git_openems_branch"
+    sed -i 's/import cython.numeric/import cython/' python/openEMS/_nf2ff.pxd
     cd ..
 
     # use a patched fparser unconditionally for now
